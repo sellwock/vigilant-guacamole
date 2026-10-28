@@ -1,0 +1,32 @@
+@import url("https://wolflexx.github.io/Ps5_ku9hChrome2/final.css");
+
+:root {
+  --eni-blossom: url("https://raw.githubusercontent.com/sellwock/vigilant-guacamole/main/Designer.png");
+}
+
+/* Controller shell */
+.controller.ds5,
+.controller.ps5,
+.controller {
+  background-image: var(--eni-blossom) !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: contain !important;
+  background-color: transparent !important;
+}
+
+/* Hide original controller artwork */
+.controller.ds5::before,
+.controller.ds5::after,
+.controller.ps5::before,
+.controller.ps5::after {
+  background: none !important;
+  background-image: none !important;
+}
+
+/* Hide any stock controller image */
+.controller img,
+.controller .controller-art,
+.controller .base {
+  opacity: 0 !important;
+}
