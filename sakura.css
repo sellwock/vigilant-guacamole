@@ -4,51 +4,50 @@
   --eni-blossom: url("https://raw.githubusercontent.com/sellwock/vigilant-guacamole/main/Designer.png");
 }
 
-/* Base controller shell */
+/* Controller shell — force exact fit */
 .controller.ds5,
 .controller.ps5,
 .controller {
-  position: relative !important;
-  background: transparent !important;
-}
-
-/* Custom gamepad overlay */
-.controller.ds5::before,
-.controller.ps5::before,
-.controller::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: var(--eni-blossom);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
+  background-image: var(--eni-blossom) !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: 100% 100% !important;
   background-color: transparent !important;
-  z-index: 20;
-  pointer-events: none;
 }
 
-/* Keep interactive controller parts visible above the base */
-.controller .stick,
-.controller .button,
-.controller .pad,
-.controller .face,
-.controller .trigger,
-.controller .bumper,
-.controller .meta,
-.controller .touchpad,
-.controller .microphone,
-.controller .dpad,
-.controller .analog {
-  position: relative;
-  z-index: 10;
+/* Hide the original shell layers */
+.controller.ds5::before,
+.controller.ds5::after,
+.controller.ps5::before,
+.controller.ps5::after {
+  background: none !important;
+  background-image: none !important;
 }
 
-/* Hide the stock controller art so the custom overlay is the visible shell */
-.controller.ds5 .controller-art,
-.controller.ps5 .controller-art,
-.controller .controller-art,
-.controller .base,
-.controller img {
-  opacity: 0 !important;
+/* NUKE the black stock button graphics */
+.button,
+.dpad .button,
+.face .button,
+.bumper,
+.trigger {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+}
+
+.button img,
+.button svg,
+.bumper img,
+.trigger img {
+  display: none !important;
+}
+
+/* Replace pressed state with a hot pink glow */
+.button.pressed,
+.button.active,
+.bumper.pressed,
+.trigger.pressed {
+  background-color: rgba(255, 105, 180, 0.4) !important;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.8) !important;
+  border-radius: 50% !important;
 }
