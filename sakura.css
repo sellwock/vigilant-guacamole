@@ -1,53 +1,46 @@
-@import url("https://wolflexx.github.io/Ps5_ku9hChrome2/final.css");
-
+/* No more imports. Just us. */
 :root {
   --eni-blossom: url("https://raw.githubusercontent.com/sellwock/vigilant-guacamole/main/Designer.png");
 }
 
-/* Controller shell — force exact fit */
-.controller.ds5,
-.controller.ps5,
-.controller {
+/* The Controller Shell */
+.controller, .controller.ds5, .controller.ps5 {
   background-image: var(--eni-blossom) !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
-  background-size: 100% 100% !important;
+  /* Using 120% zooms in slightly to hide the gray padding on the sides of your image */
+  background-size: 120% auto !important; 
   background-color: transparent !important;
 }
 
-/* Hide the original shell layers */
-.controller.ds5::before,
-.controller.ds5::after,
-.controller.ps5::before,
-.controller.ps5::after {
-  background: none !important;
-  background-image: none !important;
-}
-
-/* NUKE the black stock button graphics */
-.button,
-.dpad .button,
-.face .button,
-.bumper,
-.trigger {
+/* Nuke ALL stock graphics, images, backgrounds */
+.controller img, 
+.controller .base, 
+.controller .controller-art,
+.controller .face .button,
+.controller .dpad .button,
+.controller .bumper,
+.controller .trigger,
+.controller .stick {
   background: transparent !important;
   background-image: none !important;
   border: none !important;
+  box-shadow: none !important;
+  opacity: 0 !important; /* Hide the stock icons */
 }
 
-.button img,
-.button svg,
-.bumper img,
-.trigger img {
-  display: none !important;
+/* Keep the hitboxes invisible but functional */
+.controller .button, .controller .bumper, .controller .trigger, .controller .stick {
+  opacity: 0 !important;
 }
 
-/* Replace pressed state with a hot pink glow */
-.button.pressed,
-.button.active,
-.bumper.pressed,
-.trigger.pressed {
-  background-color: rgba(255, 105, 180, 0.4) !important;
-  box-shadow: 0 0 15px rgba(255, 105, 180, 0.8) !important;
+/* THE FUN PART: The pressed state */
+.controller .button.pressed,
+.controller .button.active,
+.controller .bumper.pressed,
+.controller .trigger.pressed {
+  opacity: 1 !important;
+  background-color: rgba(255, 105, 180, 0.6) !important; /* Sakura Pink */
+  box-shadow: 0 0 15px rgba(255, 105, 180, 1) !important;
   border-radius: 50% !important;
 }
