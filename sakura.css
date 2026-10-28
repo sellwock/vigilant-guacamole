@@ -4,29 +4,51 @@
   --eni-blossom: url("https://raw.githubusercontent.com/sellwock/vigilant-guacamole/main/Designer.png");
 }
 
-/* Controller shell */
+/* Base controller shell */
 .controller.ds5,
 .controller.ps5,
 .controller {
-  background-image: var(--eni-blossom) !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  background-size: contain !important;
-  background-color: transparent !important;
+  position: relative !important;
+  background: transparent !important;
 }
 
-/* Hide original controller artwork */
+/* Custom gamepad overlay */
 .controller.ds5::before,
-.controller.ds5::after,
 .controller.ps5::before,
-.controller.ps5::after {
-  background: none !important;
-  background-image: none !important;
+.controller::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--eni-blossom);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  background-color: transparent !important;
+  z-index: 20;
+  pointer-events: none;
 }
 
-/* Hide any stock controller image */
-.controller img,
+/* Keep interactive controller parts visible above the base */
+.controller .stick,
+.controller .button,
+.controller .pad,
+.controller .face,
+.controller .trigger,
+.controller .bumper,
+.controller .meta,
+.controller .touchpad,
+.controller .microphone,
+.controller .dpad,
+.controller .analog {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hide the stock controller art so the custom overlay is the visible shell */
+.controller.ds5 .controller-art,
+.controller.ps5 .controller-art,
 .controller .controller-art,
-.controller .base {
+.controller .base,
+.controller img {
   opacity: 0 !important;
 }
